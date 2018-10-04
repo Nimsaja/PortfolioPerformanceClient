@@ -1,12 +1,10 @@
-<h2>Stock Data</h2>
-
 <div *ngIf="yesterday">
-<h3>Yesterday: Date: {{yesterday.timehuman | date : 'dd-MM-yyyy'}}, Value: {{yesterday.value}}, Diff: {{yesterday.diff}}</h3>
+<h3>Yesterday: Date: {{yesterday.timehuman | date : 'dd-MM-yyyy'}}, Sum: {{yesterday.value}}, Profit: {{yesterday.diff}}</h3>
 </div>
 <div *ngIf="today">
-<h3>    Today: Date: {{today.timehuman | date : 'dd-MM-yyyy'}}, Value: {{today.value}}, Diff: {{today.diff}}</h3>
+<h3>    Today: Date: {{today.timehuman | date : 'dd-MM-yyyy'}}, Sum: {{today.value}}, Profit: {{today.diff}}</h3>
 </div>
 
 <div *ngIf="chart">
-  <canvas id="canvas">{{ chart }}</canvas>
+  <canvas width="100" height="40" id="canvas">{{ chart }}</canvas>
 </div>

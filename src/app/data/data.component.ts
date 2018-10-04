@@ -60,14 +60,14 @@ export class DataComponent implements OnInit {
         labels: x,
         datasets: [
           {
-            label: 'Value',
+            label: 'Sum',
             yAxisID: 'V',
             data: y,
             borderColor: '#3cba9f',
             fill: false
           },
           {
-            label: 'Diff',
+            label: 'Profit',
             yAxisID: 'D',
             data: yd,
             borderColor: '#ffcc00',
