@@ -14,6 +14,8 @@ export class DataComponent implements OnInit {
   yesterday: Data;
   today: Data;
 
+  chart = [];
+
   constructor(private stocksService: StocksService) { }
 
   ngOnInit() {
