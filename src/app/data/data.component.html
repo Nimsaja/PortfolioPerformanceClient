@@ -7,4 +7,6 @@
 <h3>    Today: Date: {{today.timehuman | date : 'dd-MM-yyyy'}}, Value: {{today.value}}, Diff: {{today.diff}}</h3>
 </div>
 
-<div *ngFor='let d of data'> {{d.timehuman | date : 'dd-MM-yyyy'}} ->  {{d.value}}</div>
+<div *ngIf="chart">
+  <canvas id="canvas">{{ chart }}</canvas>
+</div>

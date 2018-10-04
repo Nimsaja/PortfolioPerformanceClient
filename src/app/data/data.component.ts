@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Chart } from 'chart.js';
+
 import { Data } from '../data';
 import { StocksService } from '../stocks.service';
 
@@ -27,7 +29,7 @@ export class DataComponent implements OnInit {
       .subscribe(
         data => this.data = data,
         error => console.log(error),
-        () => this.showLast2Days(this.data)
+        () => (this.showLast2Days(this.data), this.plot())
       );
   }
 
@@ -40,5 +42,63 @@ export class DataComponent implements OnInit {
     if (l > 2) {
       this.yesterday = data[l - 2];
     }
+  }
+
+  plot() {
+    const x = [];
+    const y = [];
+    const yd = [];
+    for (const d of this.data) {
+      x.push(this.date(d.timehuman));
+      y.push(d.value);
+      yd.push(d.diff);
+    }
+
+    this.chart = new Chart('canvas', {
+      type: 'line',
+      data: {
+        labels: x,
+        datasets: [
+          {
+            label: 'Value',
+            yAxisID: 'V',
+            data: y,
+            borderColor: '#3cba9f',
+            fill: false
+          },
+          {
+            label: 'Diff',
+            yAxisID: 'D',
+            data: yd,
+            borderColor: '#ffcc00',
+            fill: false
+          },
+        ]
+      },
+      options: {
+        legend: {
+          display: true
+        },
+        scales: {
+          xAxes: [{
+            display: true
+          }],
+          yAxes: [{
+            id: 'V',
+            display: true,
+          },
+          {
+            id: 'D',
+            display: true,
+          },
+        ],
+        }
+      }
+    });
+  }
+
+  date(t: string): string {
+    const date: Date = new Date(t);
+    return date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear();
   }
 }
