@@ -1,0 +1,10 @@
+<h2>Stock Data</h2>
+
+<div *ngIf="yesterday">
+<h3>Yesterday: Date: {{yesterday.timehuman | date : 'dd-MM-yyyy'}}, Value: {{yesterday.value}}, Diff: {{yesterday.diff}}</h3>
+</div>
+<div *ngIf="today">
+<h3>    Today: Date: {{today.timehuman | date : 'dd-MM-yyyy'}}, Value: {{today.value}}, Diff: {{today.diff}}</h3>
+</div>
+
+<div *ngFor='let d of data'> {{d.timehuman | date : 'dd-MM-yyyy'}} ->  {{d.value}}</div>
