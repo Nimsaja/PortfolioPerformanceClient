@@ -99,6 +99,6 @@ export class DataComponent implements OnInit {
 
   date(t: string): string {
     const date: Date = new Date(t);
-    return date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear();
+    return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
   }
 }
