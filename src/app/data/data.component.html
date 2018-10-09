@@ -1,8 +1,8 @@
 <div *ngIf="yesterday">
-<h3>Yesterday: Date: {{yesterday.timehuman | date : 'dd-MM-yyyy'}}, Sum: {{yesterday.value}}, Profit: {{yesterday.diff}}</h3>
+<h3>YESTERDAY: Date: {{yesterday.timehuman | date : 'dd-MM-yyyy'}}, Sum: {{yesterday.value}}, Profit: {{yesterday.diff}}</h3>
 </div>
 <div *ngIf="today">
-<h3>    Today: Date: {{today.timehuman | date : 'dd-MM-yyyy'}}, Sum: {{today.value}}, Profit: {{today.diff}}</h3>
+<h3>    TODAY: Date: {{today.timehuman | date : 'dd-MM-yyyy'}}, Sum: {{today.value}}, Profit: {{today.diff}} (Time: {{today.timehuman | date : 'HH:mm'}})</h3>
 </div>
 
 <div *ngIf="chart">
