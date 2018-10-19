@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit} from '@angular/core';
 import { Chart } from 'chart.js';
 
 import { Data } from '../data';
@@ -18,10 +18,16 @@ export class DataComponent implements OnInit {
 
   chart = [];
 
+  innerWidth: any;
+  innerHeight: any;
+
   constructor(private stocksService: StocksService) { }
 
   ngOnInit() {
     this.getData();
+
+    this.innerWidth = window.innerWidth;
+    this.innerHeight = window.innerHeight;
   }
 
   getData(): void {
@@ -100,5 +106,13 @@ export class DataComponent implements OnInit {
   date(t: string): string {
     const date: Date = new Date(t);
     return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+  }
+
+  calcWidth(): number {
+    return this.innerWidth;
+  }
+
+  calcHeight(): number {
+    return 0.8 * this.innerHeight;
   }
 }
