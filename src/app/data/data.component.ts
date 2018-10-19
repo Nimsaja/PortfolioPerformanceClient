@@ -53,12 +53,13 @@ export class DataComponent implements OnInit {
   }
 
   showTimeRange(days: number) {
-    if (days > 0) {
-      this.maxTime = new Date();
-      this.maxTime.setDate(this.maxTime.getDate() - days);
-
-      this.plot();
+    if (days < 0) {
+      days = this.data.length;
     }
+    this.maxTime = new Date();
+    this.maxTime.setDate(this.maxTime.getDate() - days);
+
+    this.plot();
   }
 
   plot() {
