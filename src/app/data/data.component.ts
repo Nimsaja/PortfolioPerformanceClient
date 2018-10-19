@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Chart } from 'chart.js';
 
 import { Data } from '../data';
@@ -20,6 +20,8 @@ export class DataComponent implements OnInit {
 
   innerWidth: any;
   innerHeight: any;
+
+  maxTime: Date;
 
   constructor(private stocksService: StocksService) { }
 
@@ -50,11 +52,23 @@ export class DataComponent implements OnInit {
     }
   }
 
+  showTimeRange(days: number) {
+    if (days > 0) {
+      this.maxTime = new Date();
+      this.maxTime.setDate(this.maxTime.getDate() - days);
+
+      this.plot();
+    }
+  }
+
   plot() {
     const x = [];
     const y = [];
     const yd = [];
     for (const d of this.data) {
+      if (new Date(d.timehuman) < this.maxTime) {
+        continue;
+      }
       x.push(this.date(d.timehuman));
       y.push(d.value);
       yd.push(d.diff);

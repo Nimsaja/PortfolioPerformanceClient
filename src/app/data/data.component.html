@@ -5,6 +5,18 @@
 <h3>    TODAY: Date: {{today.timehuman | date : 'dd-MM-yyyy'}}, Sum: {{today.value}}, Profit: {{today.diff}} (Time: {{today.timehuman | date : 'HH:mm'}})</h3>
 </div>
 
+<div>
+  <button class="week" title="1 week" (click)="showTimeRange(7)">1 week</button>
+  <button class="twoweeks" title="2 weeks" (click)="showTimeRange(14)">2 weeks</button>
+  <button class="onemonth" title="1 month" (click)="showTimeRange(31)">1 month</button>
+  <button class="threemonths" title="3 months" (click)="showTimeRange(90)">3 months</button>
+  <button class="sixmonths" title="6 months" (click)="showTimeRange(183)">6 months</button>
+  <button class="oneyear" title="1 year" (click)="showTimeRange(365)">1 year</button>
+  <button class="threeyears" title="3 years" (click)="showTimeRange(1095)">3 years</button>
+  <button class="fiveyears" title="5 years" (click)="showTimeRange(1825)">5 years</button>
+  <button class="max" title="max" (click)="showTimeRange(-1)">Max</button>
+</div>
+
 <div *ngIf="chart">
   <canvas width={{calcWidth()}} height={{calcHeight()}} id="canvas">{{ chart }}</canvas>
 </div>
